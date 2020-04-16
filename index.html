@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='description' content='Resume for Sally Student'>
+    <meta name='keywords' content='HTML,CSS,XML,JavaScript'>
+    <title>Sally Student Resume</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id='application-root'></div>
+
+
+
+
+    <script src='https://unpkg.com/react@16/umd/react.development.js'>
+    </script>
+    <script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js'>
+    </script>
+
+    <script src='https://unpkg.com/babel-standalone@6/babel.min.js'>
+    </script>
+
+    <script type='text/babel'>
+        function App(props) {
+            console.log(props);
+            //const mailTo = 'mailto:' + props.email;
+            console.log(props.mailTo);
+            return (
+                <div>
+                    <header>
+                        <h1>{props.name + ' Resume'}</h1>
+                        <address>
+                            <ul>
+                                <li><a href={props.mailTo}> {props.email}</a></li>
+                                <li>{props.phoneNumber}</li>
+                                <li><a href={props.twitter}>Follow me on Twitter!</a></li>
+                            </ul>
+                        </address>
+                        <img src={props.picture} alt="A picture of me :)" />
+
+
+                    </header>
+
+                    <main>
+                        <section className='workHistory'>
+                            <h2>Employment History</h2>
+                            <ul>
+                                <li>
+                                    <p><b>{props.workHistory[0].name}</b>,{props.workHistory[0].title},
+                                <i>{props.workHistory[0].start} - {props.workHistory[0].end}</i></p>
+                                    <p>{props.workHistory[0].description}</p>
+
+                                </li>
+
+                                <li>
+                                    <p>
+                                        <b>{props.workHistory[1].name}</b>,{props.workHistory[1].title},
+                                        <i>{props.workHistory[1].start} - {props.workHistory[1].end}</i>
+                                    </p>
+                                    <p>{props.workHistory[1].description}</p>
+                                </li>
+
+                            </ul>
+                        </section>
+                        <section className='education'>
+                            <h2>Education</h2>
+                            <ul>
+                                <li>
+                                    <p><b>{props.education[0].name}</b></p>
+                                    <p>{props.education[0].description}</p>
+                                </li>
+                                <li>
+                                    <p><b>{props.education[1].name}</b></p>
+                                    <p>{props.education[1].description}</p>
+                                </li>
+                            </ul>
+                        </section>
+                    </main>
+
+                </div>
+
+
+            );
+
+        }
+
+        ReactDOM.render(
+            <App
+                className='Sally-student-resume'
+                name='Sally Student'
+                email='sallystudent@gmail.com'
+                mailTo='mailto:sallystudent@gmail.com'
+                phoneNumber='111-222-3344'
+                picture='Sally.jpg'
+                workHistory={
+                    [
+                        { name: 'Harris Teeter', title: ' Bagger', start: ' May 5, 2009', end: ' June 27, 2017', description: 'Best bagger in the world' },
+                        { name: 'GameStop', title: ' Assistant Store Manager', start: ' August 24, 2004', end: ' April 4, 2009', description: 'I hate this place' }
+                    ]
+                }
+                education={
+                    [
+                        { name: 'Regular College University of Florida', description: "Graduated with a Bachelor's degree in philosophy." },
+                        { name: 'The Best Charter School in Blanderville', description: 'Graduated summa cum laude from the best preschool in my area.' }
+                    ]
+                }
+                twitter='twitter.com/sally-student'
+            >
+                <div>
+                    <h1>
+                        <span>Current Page Title!</span>
+                    </h1>
+                </div>
+            </App>,
+            document.querySelector('#application-root')
+        );
+
+
+
+    </script>
+</body>
+
+</html>
